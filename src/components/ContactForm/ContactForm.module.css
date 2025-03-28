@@ -1,0 +1,103 @@
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    50% {
+        transform: translateX(4px);
+    }
+
+    75% {
+        transform: translateX(-4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.form {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    margin: 0 auto;
+    color: #f1f1f1;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #ccc;
+    margin-left: 2rem;
+}
+
+.inputWrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.5rem;
+    border: 1px solid #444;
+    border-radius: 0.5rem;
+    background-color: #2c2c2c;
+    color: #f1f1f1;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.input:focus {
+    border-color: #6a5acd;
+    background-color: #1c1c1c;
+    outline: none;
+}
+
+.inputError {
+    border-color: #ff6b6b;
+    animation: shake 0.3s;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 0.8rem;
+    transform: translateY(-50%);
+    color: #aaa;
+    pointer-events: none;
+}
+
+.error {
+    color: #ff6b6b;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.button {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #6a5acd;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #7c6ee8;
+}
+
+.button:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+}

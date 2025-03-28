@@ -1,0 +1,52 @@
+.container {
+    max-width: var(--container-max-width);
+    padding: 0 var(--container-padding);
+    margin: 0 auto;
+}
+
+.section {
+    padding: 40px 0;
+}
+
+@media (min-width: var(--breakpoint-tablet)) {
+
+    .section {
+        padding: 60px 0;
+    }
+}
+
+@media (min-width: var(--breakpoint-desktop)) {
+
+    .container {
+        max-width: 1320px;
+    }
+}
+
+.containerContact {
+    width: 350px;
+    border: 1px solid blue;
+    border-radius: 16px;
+    background-color: antiquewhite;
+    color: black;
+}
+
+.contactItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    width: 90px;
+    height: 40px;
+}
+
+.iconUser {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.iconPhone {
+    width: 25px;
+    margin-right: 6px;
+}

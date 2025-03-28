@@ -1,0 +1,81 @@
+/* .container {
+    max-width: var(--container-max-width);
+    padding: 0 var(--container-padding);
+}
+
+.section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+
+@media (min-width: var(--breakpoint-tablet)) {
+
+    .section {
+        padding: 60px 0;
+    }
+}
+
+@media (min-width: var(--breakpoint-desktop)) {
+
+    .container {
+        max-width: 1320px;
+    }
+}
+
+.list {
+    display: grid;
+    gap: 30px;
+    min-width: 700px;
+} */
+
+.container {
+    max-width: 1280px;
+    padding: 0 16px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: 60px 0;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+.list {
+    display: grid;
+    gap: 30px;
+    /* min-width: 700px; */
+    width: 100%;
+    justify-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    grid-template-columns: repeat(1, 1fr);
+    /* створюємо 3 колонки */
+}
+
+@media (min-width: 768px) {
+    .list {
+        grid-template-columns: repeat(2, 1fr);
+        /* забезпечуємо 3 колонки */
+    }
+}
+
+@media (min-width: 1440px) {
+    .list {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 колонки на великих екранах */
+    }
+}

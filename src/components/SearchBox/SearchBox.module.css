@@ -1,0 +1,31 @@
+.wrapper {
+    margin: 2rem auto;
+    max-width: 400px;
+    color: #f1f1f1;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #ccc;
+    margin-left: 0.25rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid #444;
+    border-radius: 0.5rem;
+    background-color: #2c2c2c;
+    color: #f1f1f1;
+    font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.input:focus {
+    border-color: #6a5acd;
+    background-color: #1c1c1c;
+    outline: none;
+}
