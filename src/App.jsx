@@ -2,11 +2,20 @@ import ContactForm from './components/ContactForm/ContactForm';
 import ContactList from './components/ContactList/ContactList';
 import SearchBox from './components/SearchBox/SearchBox';
 import userContacts from './assets/contacts.json';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
+import Title from './components/Title/Title';
 
 const App = () => {
-  const [contacts, setContacts] = useState(userContacts);
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = localStorage.getItem('contacts');
+
+    if (savedContacts !== null) {
+      return JSON.parse(savedContacts);
+    }
+    return userContacts;
+  });
+
   const [search, setSearch] = useState('');
 
   const addNewContact = newContact => {
@@ -25,12 +34,15 @@ const App = () => {
     contact.name?.toLowerCase().includes(search.toLowerCase())
   );
 
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+
   return (
     <>
-      <h1 className="title">Phonebook</h1>
+      <Title />
       <ContactForm onAdd={addNewContact} />
       <SearchBox value={search} onSearch={setSearch} />
-
       <ContactList contacts={visibleContact} onDelete={deleteContact} />
     </>
   );

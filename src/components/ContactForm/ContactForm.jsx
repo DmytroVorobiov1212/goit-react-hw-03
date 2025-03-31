@@ -3,6 +3,8 @@ import { nanoid } from 'nanoid';
 import s from './ContactForm.module.css';
 import { useId } from 'react';
 import * as Yup from 'yup';
+import { formatPhoneNumber } from '../../assets/js/formatPhoneNumber';
+import clsx from 'clsx';
 
 const ContactForm = ({ onAdd }) => {
   const ContactSchema = Yup.object().shape({
@@ -30,26 +32,59 @@ const ContactForm = ({ onAdd }) => {
   const phoneUserId = useId();
   return (
     <Formik
-      initialValues={{
-        name: '',
-        number: '',
-      }}
+      initialValues={{ name: '', number: '' }}
       validationSchema={ContactSchema}
       onSubmit={handleSubmit}
     >
-      <Form className={s.form}>
-        <label htmlFor={nameUserId}>Name</label>
-        <Field type="text" name="name" id={nameUserId} className={s.input} />
-        <ErrorMessage name="name" component="span" className={s.error} />
+      {({ values, setFieldValue, errors, touched }) => (
+        <Form className={s.form}>
+          <div className={s.inputWrapper}>
+            <label className={s.label} htmlFor={nameUserId}>
+              Name
+            </label>
+            <Field
+              type="text"
+              name="name"
+              id={nameUserId}
+              className={clsx(s.input, {
+                [s.inputError]: errors.name && touched.name,
+                [s.inputValid]: !errors.name && touched.name,
+              })}
+            />
+            <ErrorMessage name="name" component="span" className={s.error} />
+          </div>
 
-        <label htmlFor={phoneUserId}>Phone</label>
-        <Field type="tel" name="number" id={phoneUserId} className={s.input} />
-        <ErrorMessage name="number" component="span" className={s.error} />
+          <div className={s.inputWrapper}>
+            <label className={s.label} htmlFor={phoneUserId}>
+              Phone
+            </label>
+            <Field name="number">
+              {({ field }) => (
+                <input
+                  {...field}
+                  type="tel"
+                  id={phoneUserId}
+                  className={clsx(s.input, {
+                    [s.inputError]: errors.number && touched.number,
+                    [s.inputValid]: !errors.number && touched.number,
+                  })}
+                  value={values.number}
+                  onChange={e => {
+                    const formatted = formatPhoneNumber(e.target.value);
+                    setFieldValue('number', formatted);
+                  }}
+                  placeholder="123-45-67"
+                />
+              )}
+            </Field>
+            <ErrorMessage name="number" component="span" className={s.error} />
+          </div>
 
-        <button type="submit" className={s.button}>
-          Submit
-        </button>
-      </Form>
+          <button type="submit" className={s.button}>
+            Submit
+          </button>
+        </Form>
+      )}
     </Formik>
   );
 };
