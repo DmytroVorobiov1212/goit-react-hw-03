@@ -9,8 +9,8 @@ import clsx from 'clsx';
 const ContactForm = ({ onAdd }) => {
   const ContactSchema = Yup.object().shape({
     name: Yup.string()
-      .min(2, 'Too Short!')
-      .max(20, 'Too Long!')
+      .min(3, 'Too Short!')
+      .max(50, 'Too Long!')
       .required('Required'),
 
     number: Yup.string()
